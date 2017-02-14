@@ -84,7 +84,9 @@ function addMarkers(loc) {
                         } else {
                           viewModel.weather("Oops, couldn't load the weather.")
                         }
-                })
+                }).fail(function() {
+                      alert( "Oops, couldn't load the weather. :(" );
+                    })
 
             //Sets the pin to the center of the map once pin or list item is clicked.
             map.setCenter(marker.getPosition());
@@ -125,7 +127,9 @@ function addMarkers(loc) {
                           viewModel.weather(data.weather[0].description);
                           viewModel.icon(iconUrl);
                         }
-                })
+                }).fail(function() {
+                      alert( "Oops, couldn't load the weather. :(" );
+                    })
 
             //When skatepark is clicked from the list set the zoom to 14.
             map.setZoom(14);
