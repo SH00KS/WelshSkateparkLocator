@@ -89,7 +89,7 @@ function addMarkers(loc) {
                     })
 
             //Sets the pin to the center of the map once pin or list item is clicked.
-            map.setCenter(marker.getPosition());
+            map.panTo(marker.getPosition());
           };
         })(loc[i].saveMarker, i));
 
