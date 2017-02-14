@@ -53,8 +53,15 @@ function addMarkers(loc) {
         //Adds a listener to open the infoWindow when clicked.
         new google.maps.event.addListener(loc[i].saveMarker, 'click', (function(marker, i) {
           return function() {
-            //Adds the content to the infoWindow
 
+            //Adds an awesome bouncing effect.
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            //Times out the bouncing effect.
+            setTimeout(function () {
+                marker.setAnimation(null);
+            }, 1400);
+
+            //Adds the content to the infoWindow
             infowindow.setContent(loc[i].contentString);
             infowindow.open(map,this);
 
@@ -96,7 +103,7 @@ function addMarkers(loc) {
             //Times out the bouncing effect.
             setTimeout(function () {
                 marker.setAnimation(null);
-            }, 1900);
+            }, 1400);
 
             //Opens the window.
             infowindow.open(map,marker);
