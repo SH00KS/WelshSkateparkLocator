@@ -1,0 +1,186 @@
+body {
+  padding-top: 51px;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #222222;
+}
+
+h1 {
+  font-family: 'Chewy', cursive;
+  font-size: 2.3em;
+  color: #fff;
+}
+
+input#input {
+    width: 95%;
+}
+
+#map-canvas {
+  width:100%;
+  height: 100%
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  position:absolute
+}
+
+#sidebar {
+  height: 100%;
+  padding-right: 0;
+  padding-top: 20px;
+}
+
+#sidebar .nav {
+  width: 95%;
+  height: 80%;
+  overflow: scroll;
+}
+
+#sidebar li {
+  border:0 #84DCC6 solid;
+  border-bottom-width:1px;
+  margin: 5px;
+}
+
+.page-container{
+  height: 100%;
+}
+
+.sidebar-container{
+  height:100%;
+  width:100%
+}
+
+.sidebar {
+  height: 100%;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+.map-container{
+    height: 100%
+}
+
+.map{
+  width: 100%;
+  height: 100%;
+  position:absolute
+}
+
+.navbar-default {
+  background:rgba(0,0,0,0);
+  border: none;
+  color:#fff;
+}
+
+.navbar-brand {
+  font-family: 'Chewy', cursive;
+  font-size: 30px;
+  color: #fff;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-toggle {
+    border: none;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #84DCC6;
+}
+
+.filter-search{
+  margin: 65px 0 20px 0;
+}
+
+.filter-list{
+  height:50%;
+}
+
+.filter-list a{
+  color: #BFC0C0;
+  text-decoration: none;
+}
+
+.sidebar-text{
+  color:#BFC0C0;
+  font-size: 0.8em;
+  padding:5px;
+}
+
+.weather{
+  background-color:#fff;
+  margin-top:20px
+}
+
+.weather-location{
+  color:#222222;
+  font-size:1em;
+  font-weight:bold
+}
+
+.weather-description{
+  color:#222222;
+}
+
+.container-fluid{
+  style:height:100%;
+}
+
+@media screen and (max-width: 767px) {
+  #sidebar {
+    padding-top:0;
+    padding-left: 30px;
+  }
+
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+
+  .navbar-default {
+      background-color: #222222;
+      border-color: #95A3B3;
+  }
+
+  .navbar-brand a{
+    color:#84DCC6;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -61.6%;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -61.6%;
+  }
+
+  .row-offcanvas-right.active {
+    right: 61.6%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 61.6%;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 61.6%;
+  }
+}
