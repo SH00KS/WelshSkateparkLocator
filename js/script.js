@@ -157,7 +157,6 @@ viewModel.markers = ko.computed(function() {
             //if the filter query doesnt the start of a skatepark set the filterBool to false.
             marker.filterBool = false;
             //And show all the visible markers.
-            displayVisibleMarkers();
             return marker.visible(false);
         }
     });
