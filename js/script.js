@@ -182,3 +182,8 @@ $(document).ready(function() {
     $('.row-offcanvas').toggleClass('active');
   });
 });
+
+//Error handling for Google Map
+function mapError(){
+  alert("Oh sorry, we couldnt load the map!");
+}
