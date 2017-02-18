@@ -41,7 +41,7 @@
               <ul class="nav" data-bind="template: {name: 'marker', foreach:markers}"></ul>
               <script type="text/html" id="marker">
                   <div data-bind="visible: visible">
-                      <a href="#" data-toggle="offcanvas" data-bind="attr: {id: id}">
+                      <a href="#" data-toggle="offcanvas" data-bind="click: $parent.triggerMarker">
                           <li>
                               <strong data-bind="text: title"></strong>
                               <p data-bind="text: address"></p>

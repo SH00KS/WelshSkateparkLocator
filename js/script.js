@@ -26,7 +26,59 @@ var viewModel = {
     //weather
     name: ko.observable(''),
     weather: ko.observable(''),
-    icon: ko.observable('')
+    icon: ko.observable(''),
+
+    triggerMarker: function(data){
+      console.log(data.contentString);
+
+      var marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(data.lat, data.lng),
+        title: data.title,
+        });
+
+      //Adds the above content to a skatepark marker infoWindow.
+      var infowindow = new google.maps.InfoWindow({
+          content: data.contentString
+      });
+
+      //Adds the content to the infoWindow
+      infowindow.setContent(data.contentString);
+      infowindow.open(map, marker);
+
+      //Adds an awesome bouncing effect.
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+      //Times out the bouncing effect.
+      setTimeout(function () {
+          marker.setAnimation(null);
+      }, 1400);
+
+      //Generates open weather map query string.
+      var weatherQueryString = "http://api.openweathermap.org/data/2.5/weather?lat=" + data.lat + "&lon=" + data.lng + "&appid=" + weatherApi;
+
+      //Update the knockout view models for weather at that skatepark.
+      $.getJSON(weatherQueryString, function(data) {
+                // Check if city name is undefined, if not show it.
+                if(data.name != undefined){
+                  viewModel.name(data.name);
+                }
+                // Check if weather description is undefined, if not show it.
+                if(data.weather != undefined && data.weather.length > 0)
+                  {
+                    var iconCode = data.weather[0].icon;
+                    var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+                    viewModel.weather(data.weather[0].description);
+                    viewModel.icon(iconUrl);
+                  }
+          }).fail(function() {
+                alert( "Oops, couldn't load the weather. :(" );
+              })
+
+      //When skatepark is clicked from the list set the zoom to 14.
+      map.setZoom(14);
+      map.panTo(marker.getPosition());
+
+    }
 };
 
 //Activating knockout. (Took me ages to figure that one out!!)
@@ -54,12 +106,15 @@ function addMarkers(loc) {
         new google.maps.event.addListener(loc[i].saveMarker, 'click', (function(marker, i) {
           return function() {
 
+
+
             //Adds an awesome bouncing effect.
             marker.setAnimation(google.maps.Animation.BOUNCE);
             //Times out the bouncing effect.
             setTimeout(function () {
                 marker.setAnimation(null);
             }, 1400);
+
 
             //Adds the content to the infoWindow
             infowindow.setContent(loc[i].contentString);
@@ -90,51 +145,6 @@ function addMarkers(loc) {
 
             //Sets the pin to the center of the map once pin or list item is clicked.
             map.panTo(marker.getPosition());
-          };
-        })(loc[i].saveMarker, i));
-
-        //Sets the id using a counter.
-        var filterSkateparks = $('#order-' + i);
-        //Enables the click.
-        filterSkateparks.click((function(marker, i) {
-          return function() {
-            //Adds the content to the infoWindow
-            infowindow.setContent(loc[i].contentString);
-            //Adds an awesome bouncing effect.
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-            //Times out the bouncing effect.
-            setTimeout(function () {
-                marker.setAnimation(null);
-            }, 1400);
-
-            //Opens the window.
-            infowindow.open(map,marker);
-
-            //Generates open weather map query string.
-            var weatherQueryString = "http://api.openweathermap.org/data/2.5/weather?lat=" + loc[i].lat + "&lon=" + loc[i].lng + "&appid=" + weatherApi;
-
-            //Update the knockout view models for weather at that skatepark.
-            $.getJSON(weatherQueryString, function(data) {
-                      // Check if city name is undefined, if not show it.
-                      if(data.name != undefined){
-                        viewModel.name(data.name);
-                      }
-                      // Check if weather description is undefined, if not show it.
-                      if(data.weather != undefined && data.weather.length > 0)
-                        {
-                          var iconCode = data.weather[0].icon;
-                          var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
-                          viewModel.weather(data.weather[0].description);
-                          viewModel.icon(iconUrl);
-                        }
-                }).fail(function() {
-                      alert( "Oops, couldn't load the weather. :(" );
-                    })
-
-            //When skatepark is clicked from the list set the zoom to 14.
-            map.setZoom(14);
-            map.setCenter(marker.getPosition());
-
           };
         })(loc[i].saveMarker, i));
     }
