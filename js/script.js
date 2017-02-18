@@ -106,15 +106,12 @@ function addMarkers(loc) {
         new google.maps.event.addListener(loc[i].saveMarker, 'click', (function(marker, i) {
           return function() {
 
-
-
             //Adds an awesome bouncing effect.
             marker.setAnimation(google.maps.Animation.BOUNCE);
             //Times out the bouncing effect.
             setTimeout(function () {
                 marker.setAnimation(null);
             }, 1400);
-
 
             //Adds the content to the infoWindow
             infowindow.setContent(loc[i].contentString);
@@ -157,7 +154,7 @@ viewModel.markers = ko.computed(function() {
     //Take the filter query and converts to lowercase.
     var filterQuery = self.query().toLowerCase();
 
-    if (filterQuery == ''){
+    if (!filterQuery.length || filterQuery.value == null ){
       displayVisibleMarkers();
     }
 
