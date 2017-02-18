@@ -156,6 +156,11 @@ viewModel.markers = ko.computed(function() {
     var self = this;
     //Take the filter query and converts to lowercase.
     var filterQuery = self.query().toLowerCase();
+
+    if (filterQuery == ''){
+      displayVisibleMarkers();
+    }
+
     //Returns the computed value of the array (I think?)
     return ko.utils.arrayFilter(markers, function(marker) {
 
@@ -167,8 +172,10 @@ viewModel.markers = ko.computed(function() {
             //if the filter query doesnt the start of a skatepark set the filterBool to false.
             marker.filterBool = false;
             //And show all the visible markers.
+            displayVisibleMarkers();
             return marker.visible(false);
         }
+
     });
 }, viewModel);
 
