@@ -154,7 +154,14 @@ viewModel.markers = ko.computed(function() {
     //Take the filter query and converts to lowercase.
     var filterQuery = self.query().toLowerCase();
 
-    if (!filterQuery.length || filterQuery.value == null ){
+
+  //If all the filterBools are set to false when the query box is cleared set them to true.
+    if (filterQuery == ''){
+      for (var i = 0; i < markers.length; i++) {
+          if(markers[i].filterBool === false) {
+            markers[i].filterBool = true;
+          }
+        }
       displayVisibleMarkers();
     }
 
@@ -172,7 +179,6 @@ viewModel.markers = ko.computed(function() {
             displayVisibleMarkers();
             return marker.visible(false);
         }
-
     });
 }, viewModel);
 
