@@ -176,13 +176,12 @@ viewModel.markers = ko.computed(function() {
     });
 }, viewModel);
 
-
 //Iterates through each marker to see if it should be visible on the skatepark list.
 function displayVisibleMarkers() {
   for (var i = 0; i < markers.length; i++) {
     //If the filterBool is set to true display the marker!
     if(markers[i].filterBool === true) {
-    markers[i].saveMarker.setMap(map);
+      markers[i].saveMarker && markers[i].saveMarker.setMap(map);
     } else {
     //If the filterBool is set to false dont show the marker!
     markers[i].saveMarker.setMap(null);
