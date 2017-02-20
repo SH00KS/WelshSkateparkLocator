@@ -10,8 +10,9 @@ The app can filter skateparks via a text search or browse the map clicking on lo
 Extract the zip folder and open up index.html in your favorite web browser.
 
 **Sources**
-[https://console.developers.google.com](www.console.developers.google.com)[www.openweathermap.org/](www.openweathermap.org/)
-https://jqueryui.com/[enter link description here](https://jqueryui.com/)
-[http://knockoutjs.com/](http://knockoutjs.com/)
-[http://www.latlong.net/](http://www.latlong.net/)
-[http://stackoverflow.com/](http://stackoverflow.com/)
+* [https://console.developers.google.com](www.console.developers.google.com)
+* [www.openweathermap.org/](www.openweathermap.org/)
+* [https://jqueryui.com/](https://jqueryui.com/)
+* [http://knockoutjs.com/](http://knockoutjs.com/)
+* [http://www.latlong.net/](http://www.latlong.net/)
+* [http://stackoverflow.com/](http://stackoverflow.com/)
