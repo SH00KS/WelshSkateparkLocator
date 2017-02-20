@@ -16,7 +16,7 @@ var markers = [
     title: "Spit and Sawdust",
     lat: 51.497978,
     lng: -3.139539,
-    address: "2 Lincoln Memorial Cir",
+    address: "2 Newport Road",
     city: "Cardiff",
     id: "order-1",
     visible: ko.observable(true),

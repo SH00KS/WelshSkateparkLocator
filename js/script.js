@@ -28,14 +28,9 @@ var viewModel = {
     weather: ko.observable(''),
     icon: ko.observable(''),
 
-    triggerMarker: function(data){
-      console.log(data.contentString);
+    triggerMarker: function(data, markers){
 
-      var marker = new google.maps.Marker({
-        map: map,
-        position: new google.maps.LatLng(data.lat, data.lng),
-        title: data.title,
-        });
+      var marker = data.saveMarker;
 
       //Adds the above content to a skatepark marker infoWindow.
       var infowindow = new google.maps.InfoWindow({
@@ -45,6 +40,8 @@ var viewModel = {
       //Adds the content to the infoWindow
       infowindow.setContent(data.contentString);
       infowindow.open(map, marker);
+
+      setTimeout(function () { infowindow.close(); }, 8000);
 
       //Adds an awesome bouncing effect.
       marker.setAnimation(google.maps.Animation.BOUNCE);
